@@ -37,4 +37,25 @@ public class ClienteController {
     public List<Cliente> buscarPorEmail(@PathVariable("email") String email){
         return clRepo.findByEmail(email);
     }
+
+    @GetMapping("/todosClientes/nomeemail/{nome}/{email}")
+    public List<Cliente> findByNomeEmail(@PathVariable("nome") String nome, @PathVariable("email") String email)
+    {
+        return clRepo.findByNomeEmail(nome,email);
+    }
+
+    @DeleteMapping("/removerCliente")
+    public void removerCliente(@RequestBody Cliente cl){
+        clRepo.delete(cl);
+    }
+
+    @DeleteMapping("/removerClienteCodigo/{codigo}")
+    public void removerPorID(@PathVariable("codigo") int codigo){
+        clRepo.deleteById(codigo);
+    }
+
+    @PutMapping("/atualizarCliente")
+    public void atualizarCliente(@RequestBody Cliente cl){
+        clRepo.save(cl);
+    }
 }
