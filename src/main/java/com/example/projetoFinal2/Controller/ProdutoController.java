@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/ApiProduto")
 public class ProdutoController {
     @Autowired
     ProdutoRepository prRepo;
@@ -21,17 +23,17 @@ public class ProdutoController {
         return prRepo.findAll();
     }
 
-    @GetMapping("todosProdutos/codigo/{codigo}")
+    @GetMapping("/todosProdutos/codigo/{codigo}")
     public List<Produto> buscarProdutoPorCodigo(@PathVariable("codigo") int codigo){
         return prRepo.findByCodigo(codigo);
     }
 
-    @GetMapping("todosProdutos/partedesc/{parteDesc}")
-    public List<Produto> buscarPorParteDesc(@PathVariable("parteDesc") String parteDesc){
-        return prRepo.findByParteDesc(parteDesc);
+    @GetMapping("/todosProdutos/partedescricao/{parteDescricao}")
+    public List<Produto> buscarPorParteDescricao(@PathVariable("parteDescricao") String parteDescricao){
+        return prRepo.findByParteDescricao(parteDescricao);
     }
 
-    @GetMapping("todosProdutos/preco/{preco}")
+    @GetMapping("/todosProdutos/preco/{preco}")
     public List<Produto> buscarPorMenorPreco(@PathVariable("preco") double preco){
         return prRepo.findByPreco(preco);
     }
@@ -43,7 +45,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/todosProdutos/marcapreco/{marca}/{preco}")
-    public List<Produto> buscarPorMarcaPreco(@PathVariable("marca") String marca, @PathVariable("marca") double preco)
+    public List<Produto> buscarPorMarcaPreco(@PathVariable("marca") String marca, @PathVariable("preco") double preco)
     {
         return prRepo.findByMarcaPreco(marca,preco);
     }
