@@ -23,17 +23,17 @@ public class ClienteController {
         return clRepo.findAll();
     }
 
-    @GetMapping("todosClientes/codigo/{codigo}")
+    @GetMapping("/todosClientes/codigo/{codigo}")
     public List<Cliente> buscarPorCodigo(@PathVariable("codigo") int codigo){
        return clRepo.findByCodigo(codigo);
     }
 
-   @GetMapping("todosClientes/partenome/{parteNome}")
+   @GetMapping("/todosClientes/partenome/{parteNome}")
    public List<Cliente> buscarPorParteNome(@PathVariable("parteNome") String parteNome){
     return clRepo.findByParteNome(parteNome);
    }
 
-    @GetMapping("todosClientes/email/{email}")
+    @GetMapping("/todosClientes/email/{email}")
     public List<Cliente> buscarPorEmail(@PathVariable("email") String email){
         return clRepo.findByEmail(email);
     }
